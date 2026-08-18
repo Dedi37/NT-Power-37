@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NT-POWER | Solusi Efisiensi Energi Listrik Industri</title>
+  <meta name="description" content="NT-POWER menghemat listrik industri minimal 15%. IoT Ready, koreksi Power Factor, tanpa operator. Garansi 5 tahun. PT. Gumilang Maju Selaras." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --green:#0f7a4b; --green-d:#0a5534; --green-l:#19a066;
+      --gold:#c9a227; --navy:#0d1b2a; --navy-2:#1b3a4b;
+      --blue:#1d4e89; --blue-l:#2563eb;
+      --bg:#f4f7f4; --card:#fff; --muted:#5b6b63; --line:#e2ebe4;
+      --ok:#059669; --warn:#d97706;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--navy);line-height:1.65}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    .wrap{width:min(1180px,92%);margin:0 auto}
+    .muted{color:var(--muted)}
+    .hide{display:none!important}
+    [lang-en]{display:none}
+    html.en [lang-id]{display:none}
+    html.en [lang-en]{display:inline}
+    html.en p[lang-en],html.en h1[lang-en],html.en h2[lang-en],html.en h3[lang-en],
+    html.en li[lang-en],html.en span.block[lang-en],html.en div[lang-en]{display:block}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:50;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+    .brand-mark{width:42px;height:42px;border-radius:10px;background:linear-gradient(145deg,#1aa05a,#0d7a4b);display:grid;place-items:center;box-shadow:0 0 0 3px rgba(201,162,39,.35)}
+    .brand-mark svg{width:26px;height:26px}
+    .brand b{font-family:Outfit,sans-serif;letter-spacing:.5px;font-size:1.15rem}
+    .brand small{display:block;color:#9ad4b6;font-size:.68rem;letter-spacing:.8px}
+    .nav-links{display:flex;gap:6px;flex-wrap:wrap}
+    .nav-links a{color:#d7e8de;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 12px;border-radius:999px}
+    .nav-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+    .nav-cta{display:flex;gap:8px;align-items:center}
+    .lang{display:flex;background:#132433;border-radius:999px;overflow:hidden;border:1px solid #2a4154}
+    .lang button{border:0;background:transparent;color:#9fb3a8;padding:7px 11px;cursor:pointer;font-weight:700;font-size:.78rem}
+    .lang button.on{background:var(--green);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;text-decoration:none;border:0;border-radius:999px;padding:11px 18px;font-weight:700;cursor:pointer;font-family:inherit}
+    .btn:hover{background:var(--green-d)}
+    .btn.gold{background:var(--gold);color:#1a1403}
+    .btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff}
+    .btn.outline{background:#fff;color:var(--green);border:1.5px solid var(--green)}
+
+    /* HERO */
+    .hero{position:relative;min-height:92vh;display:grid;align-items:center;color:#fff;overflow:hidden;
+      background:
+        linear-gradient(105deg,rgba(8,28,20,.88) 0%,rgba(13,40,30,.55) 48%,rgba(10,22,18,.35) 100%),
+        url("images/catalog-p1.jpg") center/cover no-repeat,
+        linear-gradient(160deg,#0b2a1c,#163d2a 40%,#0d1b2a)}
+    .hero-fallback{position:absolute;inset:0;background:
+      radial-gradient(900px 400px at 10% 90%,rgba(25,160,102,.25),transparent 60%),
+      radial-gradient(700px 300px at 90% 10%,rgba(201,162,39,.15),transparent 50%);
+      pointer-events:none}
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding:90px 0 70px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.18);border:1px solid rgba(201,162,39,.45);color:#f3e3a6;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.6px;margin-bottom:16px}
+    .hero h1{font-family:Outfit,sans-serif;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.12;margin-bottom:16px}
+    .hero h1 em{font-style:normal;color:#7ddea8}
+    .hero-lead{font-size:1.08rem;color:#d5e8dc;max-width:540px;margin-bottom:26px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px}
+    .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 14px}
+    .stat b{display:block;font-family:Outfit,sans-serif;font-size:1.35rem;color:#ffe08a}
+    .stat span{font-size:.75rem;color:#c5d8cc}
+
+    /* CSS PRODUCT CABINET */
+    .stage{perspective:1200px;display:flex;justify-content:center;align-items:end;min-height:460px}
+    .cabinet-wrap{position:relative;transform:rotateY(-8deg) rotateX(4deg);transform-style:preserve-3d;animation:float 5s ease-in-out infinite}
+    @keyframes float{50%{transform:rotateY(-4deg) rotateX(2deg) translateY(-8px)}}
+    .cab{width:280px;height:390px;background:linear-gradient(180deg,#f3f1ea 0 68%,#1b7a4e 68% 100%);border-radius:8px 8px 4px 4px;box-shadow:18px 28px 40px rgba(0,0,0,.35),inset 0 0 0 2px #d9d4c6;position:relative;overflow:hidden}
+    .cab:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.35),transparent 18%,transparent 82%,rgba(0,0,0,.08));pointer-events:none}
+    .cab-top{height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #ddd6c6}
+    .logo-mini{font-family:Outfit;font-weight:800;color:#1b7a4e;font-size:.78rem;display:flex;align-items:center;gap:4px}
+    .bolt{color:var(--gold)}
+    .lamps{display:flex;gap:5px}
+    .lamp{width:10px;height:10px;border-radius:50%;box-shadow:0 0 8px currentColor}
+    .lamp.r{background:#e11;color:#e11;animation:blink 1.6s infinite}
+    .lamp.y{background:#f5c518;color:#f5c518}
+    .lamp.g{background:#22c55e;color:#22c55e;animation:blink 2.2s .4s infinite}
+    @keyframes blink{50%{opacity:.35}}
+    .meters{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px}
+    .meter{background:#111;border-radius:6px;height:54px;padding:6px;position:relative;box-shadow:inset 0 0 0 2px #333}
+    .meter i{display:block;height:4px;background:linear-gradient(90deg,#22c55e,#facc15 70%,#ef4444);border-radius:2px;margin-top:28px}
+    .meter b{position:absolute;top:6px;left:8px;color:#7ddea8;font-size:.62rem;letter-spacing:.4px}
+    .hmi{margin:0 12px;height:78px;background:linear-gradient(#0b3b2a,#06261b);border-radius:6px;border:2px solid #2a2a2a;padding:8px;color:#7ddea8;font-family:ui-monospace,monospace;font-size:.68rem}
+    .hmi .row{display:flex;justify-content:space-between}
+    .ctrls{display:flex;align-items:center;gap:10px;padding:10px 14px}
+    .estop{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6b6b,#c81e1e 60%,#7f1d1d);box-shadow:0 3px 0 #7f1d1d,0 0 0 4px #eee}
+    .knob{width:22px;height:22px;border-radius:50%;background:conic-gradient(#999,#eee,#666,#999);box-shadow:inset 0 0 0 3px #333}
+    .vents{position:absolute;right:10px;top:120px;display:grid;gap:4px}
+    .vents span{width:28px;height:3px;background:#cfc8b8;border-radius:2px}
+    .handle{position:absolute;right:14px;top:210px;width:10px;height:46px;background:#888;border-radius:6px}
+    .shadow-floor{width:300px;height:24px;background:radial-gradient(ellipse,rgba(0,0,0,.35),transparent 70%);margin:8px auto 0;filter:blur(2px)}
+    .badge-float{position:absolute;top:-18px;right:-28px;background:#fff;color:var(--green-d);border-radius:12px;padding:8px 12px;font-size:.75rem;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+
+    /* SECTIONS */
+    section{padding:78px 0}
+    .sec-head{text-align:center;max-width:720px;margin:0 auto 40px}
+    .sec-head h2{font-family:Outfit,sans-serif;font-size:clamp(1.7rem,3vw,2.4rem);margin:8px 0 12px}
+    .tag{color:var(--green);font-weight:800;letter-spacing:1.2px;font-size:.78rem}
+
+    /* GALLERY from PDF pages */
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    .shot{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(16,40,28,.08);border:1px solid var(--line)}
+    .shot img{width:100%;height:340px;object-fit:cover;object-position:center top;background:#dfe8e2}
+    .shot figcaption{padding:14px 16px;font-size:.9rem;font-weight:600}
+    .shot-grid{display:grid;gap:14px}
+    .shot-grid .shot img{height:163px}
+
+    .thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:16px}
+    .thumbs button{border:2px solid transparent;padding:0;border-radius:10px;overflow:hidden;cursor:pointer;background:#fff}
+    .thumbs button.on, .thumbs button:hover{border-color:var(--green)}
+    .thumbs img{height:72px;width:100%;object-fit:cover}
+    @media(max-width:1200px){.thumbs{grid-template-columns:repeat(6,1fr)}}
+    @media(max-width:768px){.thumbs{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:560px){.thumbs{grid-template-columns:repeat(2,1fr)}}
+
+    /* FEATURES */
+    .feats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 16px;text-align:center}
+    .feat .n{width:36px;height:36px;border-radius:10px;background:#e8f6ee;color:var(--green);display:grid;place-items:center;margin:0 auto 10px;font-weight:800}
+    .feat h3{font-size:.95rem;margin-bottom:6px}
+    .feat p{font-size:.82rem;color:var(--muted)}
+
+    .plus{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-top:36px;background:linear-gradient(120deg,#0d3b2a,#145c40);color:#fff;border-radius:22px;overflow:hidden}
+    .plus-copy{padding:36px}
+    .plus-copy ul{list-style:none;display:grid;gap:10px;margin-top:14px}
+    .plus-copy li{display:flex;gap:10px;align-items:flex-start}
+    .plus-copy li:before{content:"✓";color:#ffe08a;font-weight:800}
+    .plus-photo{min-height:320px;background:#0a241a url("images/catalog-p3.jpg") center/cover}
+
+    /* SPECS */
+    .spec-box{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+    th{background:var(--blue);color:#fff;text-align:left;padding:14px 16px}
+    td{padding:13px 16px;border-top:1px solid var(--line);font-size:.94rem}
+    tr:nth-child(even) td{background:#f7fbf8}
+    .note{font-size:.8rem;color:var(--muted);margin-top:8px}
+
+    /* INSTALL SIM */
+    .sim{background:#0d1b2a;color:#fff;border-radius:22px;padding:28px;overflow:hidden}
+    .flow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:24px 0}
+    .node{flex:1;min-width:120px;background:#13283a;border:1px solid #27445c;border-radius:16px;padding:14px 10px;text-align:center;position:relative}
+    .node .ico{width:54px;height:54px;margin:0 auto 8px;border-radius:14px;display:grid;place-items:center;background:#0b1c29;font-size:1.4rem}
+    .node b{display:block;font-size:.86rem}
+    .node small{color:#9fb3c4}
+    .node.ntp{background:linear-gradient(180deg,#14532d,#0b3b22);border-color:#22c55e}
+    .arrow{color:#7ddea8;font-size:1.4rem;font-weight:800;animation:pulse 1.4s infinite}
+    @keyframes pulse{50%{opacity:.35;transform:translateX(4px)}}
+    .ground{display:flex;gap:8px;justify-content:center;margin-top:8px}
+    .ground span{width:10px;height:18px;background:#f59e0b;border-radius:2px;animation:up 1s infinite alternate}
+    .ground span:nth-child(2){animation-delay:.15s}.ground span:nth-child(3){animation-delay:.3s}
+    @keyframes up{to{transform:translateY(-6px);background:#fde68a}}
+    .install-notes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+    .install-notes div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;font-size:.82rem}
+
+    /* LIVE METERS */
+    .live{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+    .gauge{background:#102233;border-radius:16px;padding:16px}
+    .bar{height:10px;background:#1e3346;border-radius:99px;overflow:hidden;margin:10px 0}
+    .bar > i{display:block;height:100%;border-radius:99px;width:0;transition:width 1s}
+    .gauge .vals{display:flex;justify-content:space-between;font-size:.85rem}
+    .down{color:#86efac}.up{color:#fca5a5}
+
+    /* CALC */
+    .calc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 10px 24px rgba(16,40,28,.05)}
+    label{display:block;font-weight:700;font-size:.86rem;margin:12px 0 6px}
+    input,select{width:100%;padding:12px 12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
+    input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px #d9f3e6}
+    .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+    .res{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .kpi{border-radius:14px;padding:14px;color:#fff}
+    .kpi b{display:block;font-size:1.25rem;font-family:Outfit}
+    .kpi span{font-size:.75rem;opacity:.9}
+    .k1{background:#0f7a4b}.k2{background:#1d4e89}.k3{background:#b45309}.k4{background:#6d28d9}
+    .empty{color:var(--muted);text-align:center;padding:30px 10px}
+
+    /* BEP visual like catalog */
+    .bep{margin-top:18px;overflow:auto}
+    .bep table th{background:#0f7a4b}
+    .chip{display:inline-block;background:#e8f6ee;color:var(--green-d);border-radius:999px;padding:3px 8px;font-weight:800;font-size:.78rem}
+
+    /* WARRANTY */
+    .warr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .w{background:#fff;border-radius:18px;padding:22px 16px;text-align:center;border:1px solid var(--line)}
+    .w i{font-style:normal;font-size:1.6rem}
+
+    /* CLIENTS */
+    .table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
+    .table-wrap td,.table-wrap th{white-space:nowrap}
+    .eff{background:#dcfce7;color:#166534;padding:3px 8px;border-radius:999px;font-weight:800}
+    .logos{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center}
+    .logos span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-weight:800;letter-spacing:.4px;color:var(--navy-2)}
+
+    /* CONTACT */
+    .cta{background:linear-gradient(120deg,#0b3b22,#14532d 50%,#1d4e89);color:#fff;border-radius:24px;padding:42px 28px;text-align:center}
+    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:22px;text-align:left}
+    .wa{background:#25D366;color:#062810}
+    footer{background:var(--navy);color:#b7c7be;padding:28px 0;text-align:center;font-size:.86rem}
+
+    /* LIGHTBOX */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;place-items:center;z-index:80;padding:24px}
+    .lb.on{display:grid}
+    .lb img{max-height:90vh;border-radius:12px;box-shadow:0 20px 60px #000}
+
+    /* FLOAT WA */
+    .fab{position:fixed;right:18px;bottom:18px;z-index:40;background:#25D366;color:#062810;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(37,211,102,.4)}
+
+    @media(max-width:980px){
+      .hero-grid,.gallery,.spec-box,.calc-grid,.plus,.contact-grid{grid-template-columns:1fr}
+      .feats,.warr,.install-notes,.live{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .hero{min-height:auto}
+      .plus-photo{min-height:220px}
+    }
+    @media(max-width:560px){
+      .feats,.warr,.stats,.res,.live{grid-template-columns:1fr}
+      .thumbs{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-in">
+      <a class="brand" href="#home">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 10-14h-7l0-6z" fill="#F5D76E" stroke="#fff" stroke-width="1"/></svg>
+        </div>
+        <div>
+          <b>NT POWER</b>
+          <small>SOLUSI EFISIENSI ENERGI</small>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#produk"><span lang-id>Produk</span><span lang-en>Product</span></a>
+        <a href="#kerja"><span lang-id>Cara Kerja</span><span lang-en>How it works</span></a>
+        <a href="#spek"><span lang-id>Spesifikasi</span><span lang-en>Specs</span></a>
+        <a href="#instal"><span lang-id>Instalasi</span><span lang-en>Install</span></a>
+        <a href="#hitung"><span lang-id>Kalkulator</span><span lang-en>Calculator</span></a>
+        <a href="#klien"><span lang-id>Klien</span><span lang-en>Clients</span></a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang">
+          <button class="on" id="btnID" onclick="setLang('id')">ID</button>
+          <button id="btnEN" onclick="setLang('en')">EN</button>
+        </div>
+        <a class="btn gold" href="#hitung"><span lang-id>Hitung Hemat</span><span lang-en>Calc Savings</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO + product simulation -->
+  <header class="hero" id="home">
+    <div class="hero-fallback"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">KATALOG PRODUK · PT. GUMILANG MAJU SELARAS</div>
+        <h1 lang-id>Hemat listrik industri hingga <em>15–45%</em> tanpa ubah jaringan Anda.</h1>
+        <h1 lang-en>Cut industrial electricity use by <em>15–45%</em> without changing your grid.</h1>
+        <p class="hero-lead" lang-id>NT-POWER memperbaiki kualitas daya, mengkoreksi Power Factor, menstabilkan lonjakan arus motor AC, dan siap dimonitor IoT kapan saja.</p>
+        <p class="hero-lead" lang-en>NT-POWER improves power quality, corrects Power Factor, stabilizes AC-motor current surges, and is IoT-ready for anytime monitoring.</p>
+        <div class="hero-actions">
+          <a class="btn gold" href="#hitung"><span lang-id>Simulasi Penghematan</span><span lang-en>Savings Simulation</span></a>
+          <a class="btn ghost" href="#produk"><span lang-id>Lihat Mesin</span><span lang-en>See the Machine</span></a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>15%+</b><span lang-id>jaminan hemat</span><span lang-en>guaranteed save</span></div>
+          <div class="stat"><b>5 thn</b><span lang-id>garansi kinerja</span><span lang-en>performance warranty</span></div>
+          <div class="stat"><b>10 thn</b><span lang-id>lifetime teruji</span><span lang-en>tested lifetime</span></div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="cabinet-wrap">
+          <div class="badge-float">IoT Ready · IP55</div>
+          <div class="cab" id="cab">
+            <div class="cab-top">
+              <div class="logo-mini"><span class="bolt">⚡</span> NT POWER</div>
+              <div class="lamps"><i class="lamp r"></i><i class="lamp y"></i><i class="lamp g"></i></div>
+            </div>
+            <div class="meters">
+              <div class="meter"><b>V L1-L2</b><i></i></div>
+              <div class="meter"><b>A LOAD</b><i style="width:62%"></i></div>
+            </div>
+            <div class="hmi">
+              <div class="row"><span>PF</span><span id="hmiPF">0.98</span></div>
+              <div class="row"><span>I-save</span><span id="hmiI">-18.4%</span></div>
+              <div class="row"><span>TEMP</span><span id="hmiT">36.2°C</span></div>
+              <div class="row"><span>STATUS</span><span>OPTIMIZE</span></div>
+            </div>
+            <div class="ctrls"><div class="estop"></div><div class="knob"></div><div class="knob"></div></div>
+            <div class="vents"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="handle"></div>
+          </div>
+          <div class="shadow-floor"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCT PHOTOS FROM PDF -->
+  <section id="produk">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">DESKRIPSI PRODUK</div>
+        <h2 lang-id>Foto mesin NT-POWER dari katalog</h2>
+        <h2 lang-en>NT-POWER machine photos from the catalog</h2>
+        <p class="muted" lang-id>Panel hemat energi untuk mesin bermotor listrik (motor AC). Dipasang paralel setelah panel utama / sub-panel.</p>
+        <p class="muted" lang-en>Energy-saving panel for AC-motor machines. Installed in parallel after the main / sub panel.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot">
+          <img id="mainShot" src="images/catalog-p2.jpg" alt="NT-POWER cabinet" onclick="openLb(this.src)"
+               onerror="this.src='images/catalog-p2.jpg'; this.style.background='#d7e3da'" />
+          <figcaption>
+            <span lang-id>Kabinet NT-POWER — pintu terbuka (HMI, meter, proteksi) & pintu tertutup (100–200 kVA)</span>
+            <span lang-en>NT-POWER cabinet — open door (HMI, meters, protection) & closed doors (100–200 kVA)</span>
+          </figcaption>
+        </figure>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="images/catalog-p4.jpg" alt="Interior & instalasi" onclick="openLb(this.src)" />
+            <figcaption><span lang-id>Interior panel + diagram instalasi</span><span lang-en>Panel interior + install diagram</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="images/catalog-p3.jpg" alt="Komponen proteksi" onclick="openLb(this.src)" />
+            <figcaption><span lang-id>Komponen proteksi & MCCB</span><span lang-en>Protection components & MCCB</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="thumbs" id="thumbs">
+        <button class="on" onclick="showPage(1,this)"><img src="images/catalog-p1.jpg" alt="Cover"></button>
+        <button onclick="showPage(2,this)"><img src="images/catalog-p2.jpg" alt="Produk"></button>
+        <button onclick="showPage(3,this)"><img src="images/catalog-p3.jpg" alt="Spek"></button>
+        <button onclick="showPage(4,this)"><img src="images/catalog-p4.jpg" alt="Instalasi"></button>
+        <button onclick="showPage(5,this)"><img src="images/catalog-p5.jpg" alt="Jaminan"></button>
+        <button onclick="showPage(6,this)"><img src="images/catalog-p6.jpg" alt="Klien"></button>
+        <button onclick="showPage(7,this)"><img src="images/catalog-p7.jpg" alt="Fitur"></button>
+        <button onclick="showPage(8,this)"><img src="images/catalog-p8.jpg" alt="Monitoring"></button>
+      </div>
+      <p class="note" style="text-align:center;margin-top:10px">
+        <span lang-id>Klik gambar untuk memperbesar halaman katalog resmi.</span>
+        <span lang-en>Click any image to enlarge the official catalog page.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW + FEATURES -->
+  <section id="kerja" style="background:#fff">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">APA ITU NT-POWER?</div>
+        <h2 lang-id>Alat penghemat energi untuk motor listrik</h2>
+        <h2 lang-en>Energy saver for electric motors</h2>
+        <p class="muted" lang-id>NT-Power memperbaiki kualitas energi pada instalasi, memanfaatkan energi yang tidak terpakai, dan menstabilkan lonjakan arus pada beban motor AC.</p>
+        <p class="muted" lang-en>NT-Power improves installation power quality, harvests unused energy, and stabilizes current surges on AC motor loads.</p>
+      </div>
+      <div class="feats">
+        <article class="feat"><div class="n">01</div><h3 lang-id>Efisiensi + Optimalisasi</h3><h3 lang-en>Efficiency + Optimization</h3><p lang-id>Menghemat sekaligus mengoptimalkan energi listrik.</p><p lang-en>Saves and optimizes electrical energy at once.</p></article>
+        <article class="feat"><div class="n">02</div><h3>Power Factor</h3><p lang-id>Mengkoreksi dan mempertahankan nilai PF.</p><p lang-en>Corrects and maintains PF value.</p></article>
+        <article class="feat"><div class="n">03</div><h3>IoT Ready</h3><p lang-id>Monitoring kapan pun & di mana pun.</p><p lang-en>Monitor anytime, anywhere.</p></article>
+        <article class="feat"><div class="n">04</div><h3 lang-id>Ramah lingkungan</h3><h3 lang-en>Eco-friendly</h3><p lang-id>Tanpa polusi udara, suara, dan limbah B3.</p><p lang-en>No air/noise pollution, no B3 waste.</p></article>
+        <article class="feat"><div class="n">05</div><h3 lang-id>Tanpa operator</h3><h3 lang-en>No operator</h3><p lang-id>Berjalan otomatis 24/7.</p><p lang-en>Runs automatically 24/7.</p></article>
+      </div>
+
+      <div class="plus">
+        <div class="plus-copy">
+          <div class="tag" style="color:#b7f0cf">KEUNGGULAN LAIN</div>
+          <h2 style="color:#fff;text-align:left" lang-id>Kinerja mesin lebih optimal</h2>
+          <h2 style="color:#fff;text-align:left" lang-en>Machines run more optimally</h2>
+          <ul>
+            <li lang-id>Menurunkan arus / Ampere beban</li><li lang-en>Reduces load current / Ampere</li>
+            <li lang-id>Mengoptimalkan daya nyata / daya kerja motor</li><li lang-en>Optimizes real / working motor power</li>
+            <li lang-id>Memperbaiki / mempertahankan Power Factor</li><li lang-en>Improves / maintains Power Factor</li>
+            <li lang-id>Menstabilkan tegangan 3 fasa</li><li lang-en>Stabilizes 3-phase voltage</li>
+            <li lang-id>Meningkatkan kualitas parameter kelistrikan ke beban</li><li lang-en>Improves electrical parameters to the load</li>
+            <li lang-id>Menurunkan suhu motor dan kabel</li><li lang-en>Lowers motor and cable temperature</li>
+          </ul>
+        </div>
+        <div class="plus-photo" onclick="openLb('images/catalog-p3.jpg')" title="Katalog halaman 3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section id="spek">
+    <div class="wrap spec-box">
+      <div>
+        <div class="tag">SPESIFIKASI TEKNIS</div>
+        <h2 lang-id>Panel 100–200 kVA</h2>
+        <h2 lang-en>100–200 kVA panel</h2>
+        <p class="muted" lang-id>Spesifikasi di bawah untuk kapasitas minimum 100 kVA. Kapasitas lebih besar menyesuaikan kebutuhan pabrik.</p>
+        <p class="muted" lang-en>Specs below are for the 100 kVA minimum. Larger plants are sized to load.</p>
+        <table>
+          <tr><th lang-id>Spesifikasi Panel*</th><th lang-en>Panel spec*</th><th>Detail</th></tr>
+          <tr><td lang-id>Kapasitas Daya</td><td lang-en>Power capacity</td><td>100 kVA – 200 kVA</td></tr>
+          <tr><td lang-id>Tegangan Operasional</td><td lang-en>Operating voltage</td><td>380V – 415V (3 fasa)</td></tr>
+          <tr><td lang-id>Frekuensi</td><td lang-en>Frequency</td><td>50 / 60 Hz</td></tr>
+          <tr><td>Respon Time</td><td lang-en style="display:none"></td><td>&lt; 20 ms</td></tr>
+          <tr><td lang-id>Suhu Operasional</td><td lang-en>Operating temp</td><td>20°C – 50°C</td></tr>
+          <tr><td lang-id>Dimensi & Berat*</td><td lang-en>Size & weight*</td><td>P 225 × L 80 × T 190 cm · 250 kg</td></tr>
+          <tr><td lang-id>Standar Proteksi</td><td lang-en>Protection</td><td>IP55 · Bypass · Temperature sensor</td></tr>
+        </table>
+        <p class="note">* spesifikasi panel untuk kapasitas daya minimum (100 kVA)</p>
+      </div>
+      <div class="shot" style="height:100%">
+        <img src="images/catalog-p4.jpg" alt="Interior NT-POWER" style="height:100%;min-height:420px;object-fit:cover" onclick="openLb(this.src)" />
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL SIMULATION -->
+  <section id="instal" style="background:#fff">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">INSTALASI & INTEGRASI</div>
+        <h2 lang-id>Simulasi pemasangan paralel</h2>
+        <h2 lang-en>Parallel installation simulation</h2>
+      </div>
+      <div class="sim">
+        <p class="muted" style="color:#9fb3c4" lang-id>Diagram instalasi sederhana — NT-POWER tidak terpasang di jaringan PLN, melainkan setelah panel utama / sub-panel.</p>
+        <p class="muted" style="color:#9fb3c4" lang-en>Simple install diagram — NT-POWER is not on the PLN grid; it sits after the main / sub panel.</p>
+        <div class="flow">
+          <div class="node"><div class="ico">⚡</div><b>PLN</b><small lang-id>Jaringan listrik</small><small lang-en>Utility grid</small></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="ico">📟</div><b lang-id>Meter & Trafo</b><b lang-en>Meter & Transformer</b><small>kWh / step-down</small></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="ico">▦</div><b>Sub Panel</b><small lang-id>Panel utama user</small><small lang-en>User main panel</small></div>
+          <div class="arrow">⇄</div>
+          <div class="node ntp"><div class="ico">⚡</div><b>NT-POWER</b><small>paralel + bypass</small>
+            <div class="ground" title="3 titik grounding"><span></span><span></span><span></span></div>
+            <small>3 grounding</small>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="ico">⚙</div><b lang-id>Motor / Beban</b><b lang-en>Motor / Load</b><small>AC motor</small></div>
+        </div>
+
+        <div class="live">
+          <div class="gauge">
+            <div class="vals"><span>Ampere beban</span><b class="down" id="gA">-18%</b></div>
+            <div class="bar"><i id="barA" style="background:#34d399;width:62%"></i></div>
+            <small style="color:#9fb3c4" lang-id>Turun setelah NT-POWER aktif</small><small style="color:#9fb3c4" lang-en>Drops after NT-POWER is on</small>
+          </div>
+          <div class="gauge">
+            <div class="vals"><span>Power Factor</span><b class="down" id="gPF">0.98</b></div>
+            <div class="bar"><i id="barPF" style="background:#60a5fa;width:92%"></i></div>
+            <small style="color:#9fb3c4" lang-id>Dikoreksi & dijaga stabil</small><small style="color:#9fb3c4" lang-en>Corrected and held stable</small>
+          </div>
+          <div class="gauge">
+            <div class="vals"><span lang-id>Suhu motor/kabel</span><span lang-en>Motor/cable temp</span><b class="down" id="gT">-8°C</b></div>
+            <div class="bar"><i id="barT" style="background:#fbbf24;width:48%"></i></div>
+            <small style="color:#9fb3c4" lang-id>Kinerja mesin lebih optimal</small><small style="color:#9fb3c4" lang-en>Machine runs cooler / better</small>
+          </div>
+        </div>
+
+        <div class="install-notes">
+          <div lang-id>1 set panel dilengkapi 3 titik grounding.</div>
+          <div lang-en>Each panel set includes 3 grounding points.</div>
+          <div lang-id>Terpasang setelah panel utama / sub-panel (bukan di jaringan PLN).</div>
+          <div lang-en>Installed after the main / sub panel (not on the PLN network).</div>
+          <div lang-id>Pemasangan paralel — jaringan user tidak diubah.</div>
+          <div lang-en>Parallel install — user wiring is not rebuilt.</div>
+          <div lang-id>Fitur Bypass: maintenance tanpa hentikan operasional.</div>
+          <div lang-en>Bypass feature: maintain without stopping operations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="hitung">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">KALKULATOR EFISIENSI</div>
+        <h2 lang-id>Simulasi BEP industri Anda</h2>
+        <h2 lang-en>Simulate your plant payback</h2>
+        <p class="muted" lang-id>Harga katalog: <b>Rp 3.500.000 / kVA</b>. Contoh di katalog: biaya listrik Rp 73 juta/bulan + NT-POWER 100 kVA = investasi Rp 350 juta.</p>
+        <p class="muted" lang-en>Catalog price: <b>Rp 3,500,000 / kVA</b>. Catalog example: Rp 73 million/month bill + 100 kVA unit = Rp 350 million investment.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="card">
+          <h3 lang-id>Input pabrik / industri</h3>
+          <h3 lang-en>Plant / industry input</h3>
+          <label lang-id>Biaya listrik / bulan (Rp)</label>
+          <label lang-en>Monthly electricity cost (Rp)</label>
+          <input id="bill" type="number" value="73000000" min="0" />
+          <div class="hint" lang-id>Isi sesuai tagihan PLN rata-rata.</div>
+          <div class="hint" lang-en>Use your average PLN invoice.</div>
+
+          <label lang-id>Kapasitas NT-POWER (kVA)</label>
+          <label lang-en>NT-POWER capacity (kVA)</label>
+          <select id="kva">
+            <option value="100">100 kVA</option>
+            <option value="150">150 kVA</option>
+            <option value="200" selected>200 kVA</option>
+            <option value="225">225 kVA</option>
+            <option value="250">250 kVA</option>
+            <option value="500">500 kVA</option>
+            <option value="520">520 kVA</option>
+            <option value="1000">1.000 kVA</option>
+          </select>
+          <div class="hint" id="invHint">Investasi: Rp 3.500.000 × kVA</div>
+
+          <label lang-id>Target efisiensi</label>
+          <label lang-en>Efficiency target</label>
+          <select id="eff">
+            <option value="15">15% — jaminan minimum</option>
+            <option value="20" selected>20% — hasil umum klien</option>
+            <option value="25">25% — pabrik pipa / industri berat</option>
+            <option value="30">30% — water plant / furniture</option>
+            <option value="40">40% — spare part (kasus terbaik)</option>
+            <option value="45">45% — wood factory (kasus terbaik)</option>
+          </select>
+
+          <button class="btn" style="width:100%;margin-top:18px;justify-content:center" onclick="calc()">
+            <span lang-id>Jalankan simulasi</span><span lang-en>Run simulation</span>
+          </button>
+        </div>
+        <div class="card">
+          <h3 lang-id>Hasil simulasi</h3>
+          <h3 lang-en>Simulation result</h3>
+          <div id="empty" class="empty" lang-id>Tekan tombol untuk melihat hemat bulanan, tahunan, BEP, dan ROI 5 tahun.</div>
+          <div id="emptyEN" class="empty hide">Press the button to see monthly/yearly savings, payback, and 5-year ROI.</div>
+          <div id="out" class="hide">
+            <div class="res">
+              <div class="kpi k1"><span lang-id>Hemat / bulan</span><span lang-en>Save / month</span><b id="rMonth">—</b></div>
+              <div class="kpi k2"><span lang-id>Hemat / tahun</span><span lang-en>Save / year</span><b id="rYear">—</b></div>
+              <div class="kpi k3"><span lang-id>Nilai investasi</span><span lang-en>Investment</span><b id="rInv">—</b></div>
+              <div class="kpi k4">BEP / Payback<b id="rBep">—</b></div>
+            </div>
+            <div class="bep">
+              <p style="margin:16px 0 8px" lang-id>Perbandingan seperti ilustrasi katalog (harga tetap Rp 3,5 jt/kVA):</p>
+              <p style="margin:16px 0 8px" lang-en>Comparison using the catalog model (price fixed at Rp 3.5 m/kVA):</p>
+              <table>
+                <tr>
+                  <th lang-id>Efisiensi</th><th lang-en>Efficiency</th>
+                  <th lang-id>Hemat / bulan</th><th lang-en>Save / month</th>
+                  <th>BEP</th>
+                  <th>ROI 5 th</th>
+                </tr>
+                <tr><td>15%</td><td id="c15">—</td><td id="b15">—</td><td id="r15">—</td></tr>
+                <tr><td>20%</td><td id="c20">—</td><td id="b20">—</td><td id="r20">—</td></tr>
+                <tr><td>30%</td><td id="c30">—</td><td id="b30">—</td><td id="r30">—</td></tr>
+              </table>
+            </div>
+            <p class="note" style="margin-top:12px" lang-id>Penghematan biaya produksi = penurunan Harga Pokok Produksi. Jaminan hemat minimum 15%.</p>
+            <p class="note" style="margin-top:12px" lang-en>Lower energy cost = lower COGS. Minimum guaranteed saving is 15%.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTY + BEP catalog visual -->
+  <section style="background:#fff">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">JAMINAN & LAYANAN</div>
+        <h2 lang-id>Diuji di lapangan, dijamin di kontrak</h2>
+        <h2 lang-en>Field-tested, contract-backed</h2>
+      </div>
+      <div class="warr">
+        <div class="w"><i>🌿</i><h3 lang-id>Jaminan hemat min. 15%</h3><h3 lang-en>Min. 15% saving guarantee</h3></div>
+        <div class="w"><i>🛠️</i><h3>Free maintenance 1 tahun</h3></div>
+        <div class="w"><i>🛡️</i><h3 lang-id>Garansi kinerja 5 tahun</h3><h3 lang-en>5-year performance warranty</h3></div>
+        <div class="w"><i>⏳</i><h3 lang-id>Lifetime 10 tahun (teruji)</h3><h3 lang-en>10-year tested lifetime</h3></div>
+      </div>
+      <div class="shot" style="margin-top:22px">
+        <img src="images/catalog-p5.jpg" alt="Ilustrasi BEP katalog" style="height:280px;object-fit:cover;object-position:center" onclick="openLb(this.src)" />
+        <figcaption>
+          <span lang-id>Ilustrasi BEP katalog: 100 kVA · Rp 350 juta · hemat 15% = BEP 32 bulan · 20% = BEP 24 bulan.</span>
+          <span lang-en>Catalog BEP: 100 kVA · Rp 350 million · 15% save = 32 months · 20% = 24 months.</span>
+        </figcaption>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="klien">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="tag">LAMPIRAN · LIST PENGGUNA</div>
+        <h2 lang-id>Hasil efisiensi nyata di industri</h2>
+        <h2 lang-en>Real efficiency results in industry</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>No</th>
+            <th lang-id>Nama</th><th lang-en>Name</th>
+            <th lang-id>Lokasi</th><th lang-en>Location</th>
+            <th lang-id>Jenis usaha</th><th lang-en>Business</th>
+            <th>PLN (kVA)</th>
+            <th>NT-POWER</th>
+            <th lang-id>Tahun</th><th lang-en>Year</th>
+            <th lang-id>Efisiensi</th><th lang-en>Efficiency</th>
+          </tr>
+          <tr><td>1</td><td>PT. Otorindo</td><td>Kab. Bandung</td><td>Pabrik Spare Part</td><td>200</td><td>200</td><td>2023</td><td><span class="eff">40%</span></td></tr>
+          <tr><td>2</td><td>Pasar Induk Caringin</td><td>Kota Bandung</td><td>Pasar Induk</td><td>865</td><td>520</td><td>2023</td><td><span class="eff">20%</span></td></tr>
+          <tr><td>3</td><td>PT. Samudera Indonesia</td><td>Kota Samarinda</td><td>Port</td><td>280</td><td>225</td><td>2023</td><td><span class="eff">20%</span></td></tr>
+          <tr><td>4</td><td>PT. Akasha</td><td>Bogor</td><td>Mineral Water Plant</td><td>250</td><td>250</td><td>2022</td><td><span class="eff">30%</span></td></tr>
+          <tr><td>5</td><td>PT. KHI</td><td>Cilegon</td><td>Industrial Pipe Factory</td><td>500</td><td>500</td><td>2020</td><td><span class="eff">25%</span></td></tr>
+          <tr><td>6</td><td>PT. Leo</td><td>Tangerang, Banten</td><td>Tin Accessories Factory</td><td>835</td><td>500</td><td>2019</td><td><span class="eff">20%</span></td></tr>
+          <tr><td>7</td><td>PT. Kurnia Anggun</td><td>Mojokerto</td><td>Furniture Factory</td><td>1730</td><td>1.000</td><td>2019</td><td><span class="eff">30%</span></td></tr>
+          <tr><td>8</td><td>PT. IAGO</td><td>Tulungagung</td><td>Wood Factory</td><td>66</td><td>100</td><td>2016</td><td><span class="eff">45%</span></td></tr>
+        </table>
+      </div>
+      <div class="logos">
+        <span>SAMUDERA</span><span>AKASHA INTERNATIONAL</span><span>IAGO</span><span>PT. KURNIA ANGGUN</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontak">
+    <div class="wrap">
+      <div class="cta">
+        <h2 lang-id>Siap turunkan tagihan listrik pabrik?</h2>
+        <h2 lang-en>Ready to cut your plant electricity bill?</h2>
+        <p style="max-width:640px;margin:10px auto 0;color:#d7efe3" lang-id>Survey beban gratis. Tim kami menyesuaikan kapasitas NT-POWER dengan profil motor Anda.</p>
+        <p style="max-width:640px;margin:10px auto 0;color:#d7efe3" lang-en>Free load survey. We size NT-POWER to your motor profile.</p>
+        <div class="contact-grid">
+          <div class="card" style="color:var(--navy)">
+            <b>PT. Gumilang Maju Selaras</b>
+            <p class="muted">IoT | construction | consultant</p>
+            <p style="margin-top:10px">Jl. Sanggar Kencana Utama No. 28<br>Bandung, Jawa Barat 40286</p>
+            <p>Telp. <a href="tel:+62227307791">022-7307791</a></p>
+            <p><a href="https://www.gumilangmajuselaras.com" target="_blank">www.gumilangmajuselaras.com</a></p>
+          </div>
+          <div class="card" style="color:var(--navy)">
+            <b>Contact Person</b>
+            <p>Muhammad Mujaddedi H.</p>
+            <p style="font-size:1.25rem;font-weight:800;margin:8px 0">0856.4966.0705</p>
+            <a class="btn wa" style="width:100%;justify-content:center" target="_blank"
+               href="https://wa.me/6285649660705?text=Halo%20NT-POWER%2C%20saya%20ingin%20simulasi%20efisiensi%20listrik%20industri.">
+              WhatsApp sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> PT. Gumilang Maju Selaras · NT POWER — Solusi Efisiensi Energi
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/6285649660705?text=Halo%20NT-POWER" target="_blank" title="WhatsApp">WA</a>
+  <div class="lb" id="lb" onclick="this.classList.remove('on')"><img id="lbImg" alt="katalog" /></div>
+
+  <script>
+    const PRICE = 3500000;
+    const rupiah = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+
+    function setLang(l){
+      document.documentElement.classList.toggle('en', l==='en');
+      document.documentElement.lang = l==='en' ? 'en' : 'id';
+      btnID.classList.toggle('on', l==='id');
+      btnEN.classList.toggle('on', l==='en');
+      document.getElementById('emptyEN').classList.toggle('hide', l!=='en');
+      if(l==='en') document.getElementById('empty').classList.add('hide');
+      else if(document.getElementById('out').classList.contains('hide'))
+        document.getElementById('empty').classList.remove('hide');
+    }
+
+    function showPage(n, btn){
+      document.getElementById('mainShot').src = 'images/catalog-p'+n+'.jpg';
+      document.querySelectorAll('#thumbs button').forEach(b=>b.classList.remove('on'));
+      if(btn) btn.classList.add('on');
+    }
+    function openLb(src){
+      if(!src) return;
+      lbImg.src = src;
+      lb.classList.add('on');
+    }
+
+    function calc(){
+      const bill = +document.getElementById('bill').value || 0;
+      const kva  = +document.getElementById('kva').value;
+      const eff  = +document.getElementById('eff').value / 100;
+      if(bill<=0){ alert(document.documentElement.classList.contains('en') ? 'Enter monthly bill' : 'Isi biaya listrik bulanan'); return; }
+      const inv = kva * PRICE;
+      const month = bill * eff;
+      const year = month * 12;
+      const bep = month>0 ? Math.ceil(inv/month) : 0;
+      document.getElementById('invHint').textContent = (document.documentElement.classList.contains('en')?'Investment: ':'Investasi: ') + rupiah(inv);
+      rMonth.textContent = rupiah(month);
+      rYear.textContent  = rupiah(year);
+      rInv.textContent   = rupiah(inv);
+      rBep.textContent   = bep + (document.documentElement.classList.contains('en')?' months':' bulan');
+      [15,20,30].forEach(p=>{
+        const m = bill*(p/100);
+        const b = Math.ceil(inv/m);
+        const roi = ((m*12*5 - inv)/inv*100).toFixed(0);
+        document.getElementById('c'+p).textContent = rupiah(m);
+        document.getElementById('b'+p).textContent = b + ' bln';
+        document.getElementById('r'+p).textContent = roi + '%';
+      });
+      empty.classList.add('hide'); emptyEN.classList.add('hide'); out.classList.remove('hide');
+      // live meters follow efficiency
+      barA.style.width = Math.max(30, 100-eff*120) + '%';
+      gA.textContent = '-' + Math.round(eff*100) + '%';
+      barPF.style.width = Math.min(98, 70+eff*80) + '%';
+      gPF.textContent = (0.82 + eff*0.2).toFixed(2);
+      barT.style.width = Math.max(28, 70-eff*80) + '%';
+      gT.textContent = '-' + Math.round(4+eff*20) + '°C';
+      hmiI.textContent = '-' + (eff*100).toFixed(1) + '%';
+      hmiPF.textContent = (0.82 + eff*0.2).toFixed(2);
+    }
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('kva').addEventListener('change', ()=>{
+      invHint.textContent = 'Investasi: ' + rupiah((+kva.value)*PRICE);
+    });
+    // auto-run catalog example so page is not empty
+    calc();
+
+    // HMI live tick
+    setInterval(()=>{
+      const t = 35.4 + Math.random()*1.4;
+      hmiT.textContent = t.toFixed(1) + '°C';
+    }, 1600);
+  </script>
+</body>
+</html>
